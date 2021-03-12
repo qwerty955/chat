@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" id="inp"><button id="but">send</button>
+
+    <script>
+    let socket = new WebSocket("wss://fast-dusk-26510.herokuapp.com/");
+
+    const inp = document.getElementById("inp");
+
+    const but = document.getElementById("but")
+
+    socket.addEventListener("open",(e)=>{
+    alert("Server open")
+    secket.send("зашёл новый пользователь!")
+    but.onclick=()=>{
+        socket.send(inp.value);
+    }
+    });
+
+    socket.onclose = e => {
+    alert("server close")
+    };
+
+    socket.onmessage = function (e) {
+    console.log(e)
+    alert("message")
+    document.body.innerHTML+=`<p>${e.data}</p>`
+    };
+    </script>
+</body>
+</html>
