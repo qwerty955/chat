@@ -19,7 +19,7 @@
 
     socket.addEventListener("open",(e)=>{
     alert("Server open")
-    secket.send("зашёл новый пользователь!")
+    socket.send("зашёл новый пользователь!")
     but.onclick=()=>{
         socket.send(inp.value);
     }
